@@ -20,7 +20,16 @@
 		<span class="text-2xl font-semibold">Banana</span>
 	</header>
 
-	<div class="hero flex flex-col h-124.25 items-center gap-5 pt-45">
+	<div class="hero relative flex flex-col h-124.25 items-center gap-5 pt-45">
+        <!--ซ้ายบน-->
+        <img src="/grassedEmoji.svg" alt="floating emoji" class="animate-float animate-delay-2000 absolute top-30 left-30 w-16 h-16 -rotate-30 z-0" />
+        <!--ซ้ายล่าง-->
+        <img src="/teeth.svg" alt="floating emoji" class="animate-float absolute bottom-30 left-15 w-24 h-24 z-0" />
+        <!--ขวาบน-->
+        <img src="/someone.svg" alt="floating emoji" class="animate-float absolute top-25 right-15 w-24 h-24 z-0" />
+        <!--ขวาล่าง-->
+        <img src="/die.svg" alt="floating emoji" class="animate-float animate-delay-2000 absolute bottom-20 right-20 w-20 h-20 z-0" />
+
 		<h1 class="text-8xl font-semibold tracking-wide">Take Banana</h1>
 		<h3 class="text-[32px] font-light tracking-wider">Copied png to use as your emoji</h3>
 		<a href="#explore" class="rounded-xl bg-[#FF7A45] transition duration-300 ease-in-out px-20 py-3 text-black hover:bg-[#f8885c] text-[16px] font-medium mt-5">
@@ -63,6 +72,10 @@
 
 </div>
 
+<div class="bg-[#1D1D1D] text-[#8D8D8D] mt-10 p-8 font-normal text-[14px] text-center">
+    Ⓒ Copyright 2026 CSDEV KMITL. All rights reserved.
+</div>
+
 <style>
 	span,h1,h3,p {
 		color: #ffffff;
@@ -71,4 +84,25 @@
 		height: 72px;
 		padding: 14px 18px;
 	}
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    .animate-float {
+        animation-name: float;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+    .animate-delay-2000 {
+        animation-delay: 2000ms; 
+    }
 </style>
