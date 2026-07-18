@@ -1,5 +1,5 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: Inter;
+  --font-sans: 'Inter', sans-serif;
 }
