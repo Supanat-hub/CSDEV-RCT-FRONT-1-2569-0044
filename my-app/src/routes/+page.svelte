@@ -48,6 +48,7 @@
             onkeydown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     handleCopy(emoji.id);
+                    e.preventDefault(); // auti scroll
                 }
             }}
         >
