@@ -17,11 +17,22 @@ function isEmoji(value: unknown): value is Emoji {
 }
 
 export const load = async () => {
-    const response = await fetch(API_EMOJI_URL); //ดึงข้อมูล
-    const data: unknown = await response.json(); //แปลงเป็นjson
-    const emojis = Array.isArray(data) ? data.filter(isEmoji) : [];
-    
-    return {
-        emojis
-    };
+    try{
+        const response = await fetch(API_EMOJI_URL); //ดึงข้อมูล
+        if (!response.ok) {
+            throw new Error('Failed to fetch emojis');
+        }
+        const data: unknown = await response.json(); //แปลงเป็นjson
+        const emojis = Array.isArray(data) ? data.filter(isEmoji) : [];
+        return {
+            emojis,
+            error: null
+        };
+
+    } catch(err) {
+        return { 
+            emojis: [], 
+            error: 'Failed to fatch emojis'
+        };
+    }
 };
