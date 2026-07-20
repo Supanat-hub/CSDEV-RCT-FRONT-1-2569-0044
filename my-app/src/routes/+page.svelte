@@ -31,8 +31,12 @@
     }
 // preload animation
   let showPreloader = $state(true);
+  let flyProps = $state({ x: '0', y: '-140%', duration: 400 });
 
   onMount(() => {
+    if (window.innerWidth < 768) {
+			flyProps = { x: '100%', y: '0', duration: 400 };
+		}
     setTimeout(() => {
       showPreloader = false;
     }, 200);
@@ -45,9 +49,9 @@
 
 {#if showPreloader}
   <div class="preloader-container" >
-    <div class="square" style="background-color: #292929" out:fly={{ y: '-140%', duration: 400, delay: 0 }}></div>
-    <div class="square" style="background-color: #212121" out:fly={{ y: '-140%', duration: 400, delay: 100 }}></div>
-    <div class="square" style="background-color: #292929" out:fly={{ y: '-140%', duration: 400, delay: 200 }}></div>
+    <div class="square" style="background-color: #292929" out:fly={{ ...flyProps, delay: 0 }}></div>
+    <div class="square" style="background-color: #212121" out:fly={{ ...flyProps, delay: 100 }}></div>
+    <div class="square" style="background-color: #292929" out:fly={{ ...flyProps, delay: 200 }}></div>
   </div>
 {/if}
 
@@ -145,6 +149,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: row;
     align-items: stretch;
     z-index: 9999;
     background-color: transparent;
@@ -153,5 +158,15 @@
     .square {
         flex: 1 1 0;
         height: 100%;
+        width: auto;
     }
+    @media (max-width: 767px) {
+		.preloader-container {
+			flex-direction: column; 
+		}
+		.square {
+			width: 100%;
+			height: auto;
+		}
+	}
 </style>
