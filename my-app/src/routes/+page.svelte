@@ -34,7 +34,7 @@
   let flyProps = $state({ x: '0', y: '-140%', duration: 400 });
 
   onMount(() => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 780) {
 			flyProps = { x: '100%', y: '0', duration: 400 };
 		}
     setTimeout(() => {
@@ -160,7 +160,7 @@
         height: 100%;
         width: auto;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 780px) {
 		.preloader-container {
 			flex-direction: column; 
 		}
