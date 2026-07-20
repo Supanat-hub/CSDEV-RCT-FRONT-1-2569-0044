@@ -3,3 +3,13 @@
 @theme {
   --font-sans: 'Inter', sans-serif;
 }
+
+body {
+  cursor: url('/cursor/normal.cur') 16 16, auto;
+}
+.use-hover-cursor {
+  cursor: url('/cursor/normal.cur') 16 16, auto;
+}
+.use-hover-cursor:hover {
+  cursor: url('/cursor/hover.cur') 16 16, auto;
+}

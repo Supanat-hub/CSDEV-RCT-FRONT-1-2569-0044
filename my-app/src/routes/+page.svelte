@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+    import './layout.css';
 	import { fly } from 'svelte/transition';
 	import logo from '$lib/assets/logo.svg';
 
@@ -41,17 +42,17 @@
 
 	<div class="hero relative flex flex-col h-124.25 items-center gap-5 pt-45">
         <!--ซ้ายบน-->
-        <img src="/grassedEmoji.svg" alt="floating emoji" class="animate-float animate-delay-2000 absolute top-25 left-10 md:top-30 md:left-30 w-15 h-15 lg:w-16 lg:h-16 -rotate-30 z-0" />
+        <img src="/grassedEmoji.svg" alt="floating emoji" class="animate-float-4 absolute top-25 left-10 md:top-30 md:left-30 w-15 h-15 lg:w-16 lg:h-16 -rotate-30 z-0" />
         <!--ซ้ายล่าง-->
-        <img src="/teeth.svg" alt="floating emoji" class="animate-float absolute bottom-5 left-5 md:bottom-30 md:left-15 w-20 h-20 lg:w-24 lg:h-24 z-0" />
+        <img src="/teeth.svg" alt="floating emoji" class="animate-float-8 absolute bottom-5 left-5 md:bottom-30 md:left-15 w-20 h-20 lg:w-24 lg:h-24 z-0" />
         <!--ขวาบน-->
-        <img src="/someone.svg" alt="floating emoji" class="animate-float absolute top-20 right-0 md:top-25 md:right-15 w-20 h-20 lg:w-24 lg:h-24 z-0" />
+        <img src="/someone.svg" alt="floating emoji" class="animate-float-6 absolute top-20 right-0 md:top-25 md:right-15 w-20 h-20 lg:w-24 lg:h-24 z-0" />
         <!--ขวาล่าง-->
-        <img src="/die.svg" alt="floating emoji" class="animate-float animate-delay-2000 absolute bottom-0 right-5 md:bottom-20 md:right-20 w-16 h-16 lg:w-20 lg:h-20 z-0" />
+        <img src="/die.svg" alt="floating emoji" class="animate-float-4 absolute bottom-0 right-5 md:bottom-20 md:right-20 w-16 h-16 lg:w-20 lg:h-20 z-0" />
 
 		<h1 class="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-wide">Take Banana</h1>
 		<h3 class="text-lr md:text-2xl lg:text-[32px] font-light tracking-wider">Copied png to use as your emoji</h3>
-		<a href="#explore" class="rounded-xl bg-[#FF7A45] transition duration-300 ease-in-out px-20 py-3 text-black hover:bg-[#f8885c] text-[12px] md:text-[14px] lg:text-[16px] font-medium mt-5">
+		<a href="#explore" class="use-hover-cursor rounded-xl bg-[#FF7A45] transition duration-300 ease-in-out px-20 py-3 text-black hover:bg-[#f8885c] text-[12px] md:text-[14px] lg:text-[16px] font-medium mt-5">
 			Explore banana
 		</a>
 	</div>
@@ -62,7 +63,7 @@
 
     <div class="rounded-2xl bg-[#1F1F1F] mt-2 p-2 grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9">
         {#each data.emojis as emoji}
-        <div role="button" tabindex="0" class="relative cursor-pointer rounded-lg flex flex-col items-center justify-center m-1 p-2 transition duration-300 ease-in-out hover:bg-[#FFFFFF1C]"
+        <div role="button" tabindex="0" class="use-hover-cursor relative rounded-lg flex flex-col items-center justify-center m-1 p-2 transition duration-300 ease-in-out hover:bg-[#FFFFFF1C]"
             onclick={() => handleCopy(emoji.id)}
             onkeydown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -116,13 +117,22 @@
             transform: translateY(0px);
         }
     }
-    .animate-float {
+    .animate-float-4 {
         animation-name: float;
         animation-duration: 4s;
         animation-iteration-count: infinite;
         animation-timing-function: ease-in-out;
     }
-    .animate-delay-2000 {
-        animation-delay: 2000ms; 
+    .animate-float-8 {
+        animation-name: float;
+        animation-duration: 8s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+    .animate-float-6 {
+        animation-name: float;
+        animation-duration: 6s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
     }
 </style>
