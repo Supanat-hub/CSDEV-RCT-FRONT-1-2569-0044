@@ -2,6 +2,7 @@
 	import type { PageData } from './$types';
     import './layout.css';
 	import { fly } from 'svelte/transition';
+    import { onMount } from 'svelte';
 	import logo from '$lib/assets/logo.svg';
 
 	let { data }: { data: PageData } = $props();
@@ -28,11 +29,27 @@
             copiedId = null;
         }, 500);
     }
+// preload animation
+  let showPreloader = $state(true);
+
+  onMount(() => {
+    setTimeout(() => {
+      showPreloader = false;
+    }, 200);
+  });
 </script>
 
 <svelte:head>
   <title>Banana | Home Page</title>
 </svelte:head>
+
+{#if showPreloader}
+  <div class="preloader-container" >
+    <div class="square" style="background-color: #292929" out:fly={{ y: '-140%', duration: 400, delay: 0 }}></div>
+    <div class="square" style="background-color: #212121" out:fly={{ y: '-140%', duration: 400, delay: 100 }}></div>
+    <div class="square" style="background-color: #292929" out:fly={{ y: '-140%', duration: 400, delay: 200 }}></div>
+  </div>
+{/if}
 
 <div class="mx-auto max-w-5xl">
 	<header class="flex items-center justify-start gap-2.5">
@@ -42,13 +59,13 @@
 
 	<div class="hero relative flex flex-col h-124.25 items-center gap-5 pt-45">
         <!--ซ้ายบน-->
-        <img src="/grassedEmoji.svg" alt="floating emoji" class="animate-float-4 absolute top-25 left-10 md:top-30 md:left-30 w-15 h-15 lg:w-16 lg:h-16 -rotate-30 z-0" />
+        <img src="/grassedEmoji.svg" alt="floating emoji" style="animation-duration: 4s" class="animate-float absolute top-25 left-10 md:top-30 md:left-30 w-15 h-15 lg:w-16 lg:h-16 -rotate-30 z-0" />
         <!--ซ้ายล่าง-->
-        <img src="/teeth.svg" alt="floating emoji" class="animate-float-8 absolute bottom-5 left-5 md:bottom-30 md:left-15 w-20 h-20 lg:w-24 lg:h-24 z-0" />
+        <img src="/teeth.svg" alt="floating emoji" style="animation-duration: 8s" class="animate-float absolute bottom-5 left-5 md:bottom-30 md:left-15 w-20 h-20 lg:w-24 lg:h-24 z-0" />
         <!--ขวาบน-->
-        <img src="/someone.svg" alt="floating emoji" class="animate-float-6 absolute top-20 right-0 md:top-25 md:right-15 w-20 h-20 lg:w-24 lg:h-24 z-0" />
+        <img src="/someone.svg" alt="floating emoji" style="animation-duration: 6s" class="animate-float absolute top-20 right-0 md:top-25 md:right-15 w-20 h-20 lg:w-24 lg:h-24 z-0" />
         <!--ขวาล่าง-->
-        <img src="/die.svg" alt="floating emoji" class="animate-float-4 absolute bottom-0 right-5 md:bottom-20 md:right-20 w-16 h-16 lg:w-20 lg:h-20 z-0" />
+        <img src="/die.svg" alt="floating emoji" style="animation-duration: 4s" class="animate-float absolute bottom-0 right-5 md:bottom-20 md:right-20 w-16 h-16 lg:w-20 lg:h-20 z-0" />
 
 		<h1 class="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-wide">Take Banana</h1>
 		<h3 class="text-lr md:text-2xl lg:text-[32px] font-light tracking-wider">Copied png to use as your emoji</h3>
@@ -117,22 +134,24 @@
             transform: translateY(0px);
         }
     }
-    .animate-float-4 {
+    .animate-float {
         animation-name: float;
-        animation-duration: 4s;
         animation-iteration-count: infinite;
         animation-timing-function: ease-in-out;
     }
-    .animate-float-8 {
-        animation-name: float;
-        animation-duration: 8s;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
+    .preloader-container {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: stretch;
+    z-index: 9999;
+    background-color: transparent;
+    overflow: hidden;
     }
-    .animate-float-6 {
-        animation-name: float;
-        animation-duration: 6s;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
+    .square {
+        flex: 1 1 0;
+        height: 100%;
     }
 </style>
