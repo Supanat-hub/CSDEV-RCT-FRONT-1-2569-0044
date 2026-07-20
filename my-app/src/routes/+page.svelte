@@ -27,9 +27,13 @@
     }
 </script>
 
+<svelte:head>
+  <title>Banana | Home Page</title>
+</svelte:head>
+
 <div class="mx-auto max-w-5xl">
 	<header class="flex items-center justify-start gap-2.5">
-		<img src="/logo.svg" alt="logo" class="h-9 w-9" />
+		<img src="/src/lib/assets/logo.svg" alt="logo" class="h-9 w-9" />
 		<span class="text-2xl font-semibold">Banana</span>
 	</header>
 
