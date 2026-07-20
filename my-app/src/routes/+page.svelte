@@ -5,8 +5,21 @@
 
     let copiedId = $state<string | null>(null);
 
-    function handleCopy(id: string) {
+    async function handleCopy(id: string) {
         copiedId = id;
+
+        try {
+            const response = await fetch(`/api/emoji/${id}`);
+            const blob = await response.blob();
+
+            if (navigator.clipboard && window.ClipboardItem) {
+                await navigator.clipboard.write([
+                    new ClipboardItem({ [blob.type]: blob }),
+                ]);
+            }
+        } catch (error) {
+            console.warn('Copy failed', error);
+        }
 
         setTimeout(() => {
             copiedId = null;
