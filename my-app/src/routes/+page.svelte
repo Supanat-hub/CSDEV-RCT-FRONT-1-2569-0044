@@ -94,7 +94,7 @@
             }}
         >
             <img src={`/api/emoji/${emoji.id}`} alt="{emoji.name}" class="w-13.5 h-13.5" loading="lazy" decoding="async"/>
-            <p class="EmojiNmae flex text-[12px] max-w-20 pt-5 tracking-wider font-normal">
+            <p class="flex text-[11px] max-w-18 pt-5 tracking-wider font-extralight">
                 <span>:</span> 
                 <span class="truncate min-w-0"> {emoji.name} </span>
                 <span>:</span>
