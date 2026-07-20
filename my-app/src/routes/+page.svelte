@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-    import { fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
+	import logo from '$lib/assets/logo.svg';
+
 	let { data }: { data: PageData } = $props();
 
     let copiedId = $state<string | null>(null);
@@ -33,7 +35,7 @@
 
 <div class="mx-auto max-w-5xl">
 	<header class="flex items-center justify-start gap-2.5">
-		<img src="/src/lib/assets/logo.svg" alt="logo" class="h-9 w-9" />
+		<img src={logo} alt="logo" class="h-9 w-9" />
 		<span class="text-2xl font-semibold">Banana</span>
 	</header>
 
