@@ -5,11 +5,11 @@
 }
 
 body {
-  cursor: url('/cursor/normal.cur') 16 16, auto;
+  cursor: url('/cursor/normal.cur') 0 0, auto;
 }
 .use-hover-cursor {
-  cursor: url('/cursor/normal.cur') 16 16, auto;
+  cursor: url('/cursor/normal.cur') 0 0, auto;
 }
 .use-hover-cursor:hover {
-  cursor: url('/cursor/hover.cur') 16 16, auto;
+  cursor: url('/cursor/hover.cur') 0 0, auto;
 }
