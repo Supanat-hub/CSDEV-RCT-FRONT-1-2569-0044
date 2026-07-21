@@ -10,10 +10,16 @@ export async function GET({ params, fetch }) {
         if (!response.ok) {
             throw error(404, 'Not found emoji');
         }
+
+        const blob = await response.blob();
+        const contentType =
+            response.headers.get('content-type')?.split(';')[0].trim() ||
+            blob.type || 'image/png';
         const sourceCache = response.headers.get('cache-control') || 'public, max-age=604800';
-        return new Response(await response.blob(), {
+
+        return new Response(blob, {
             headers: {
-                'Content-Type': response.headers.get('content-type') || 'image/png',
+                'Content-Type': contentType,
                 'Cache-Control': sourceCache
             }
         });
