@@ -13,13 +13,21 @@
         copiedId = id;
 
         try {
-            const response = await fetch(`/api/emoji/${id}`);
-            const blob = await response.blob();
+            const emojiUrl = `${window.location.origin}/${id}`;
+            const response = await fetch(emojiUrl);
+            const contentType = response.headers.get('content-type') || '';
 
-            if (navigator.clipboard && window.ClipboardItem) {
-                await navigator.clipboard.write([
-                    new ClipboardItem({ [blob.type]: blob }),
-                ]);
+            if (contentType.includes('image/gif')) {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(emojiUrl);
+                }
+            } else {
+                const blob = await response.blob();
+                if (navigator.clipboard && window.ClipboardItem) {
+                    await navigator.clipboard.write([
+                        new ClipboardItem({ [blob.type]: blob }),
+                    ]);
+                }
             }
         } catch (error) {
             console.warn('Copy failed', error);
