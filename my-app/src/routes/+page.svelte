@@ -13,7 +13,7 @@
         copiedId = id;
 
         try {
-            const emojiUrl = `${window.location.origin}/${id}`;
+            const emojiUrl = `${window.location.origin}/api/emoji/${id}`;
             const response = await fetch(emojiUrl);
             const contentType = response.headers.get('content-type') || '';
 
