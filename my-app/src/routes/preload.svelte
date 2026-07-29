@@ -3,11 +3,11 @@
 	import { onMount } from 'svelte';
 	// preload animation
 	let showPreloader = $state(true);
-	let flyProps = $state({ x: '0', y: '-140%', duration: 400 });
+	let flyProps = $state({ x: 0, y: -1000, duration: 400 });
 
 	onMount(() => {
 		if (window.innerWidth < 780) {
-			flyProps = { x: '100%', y: '0', duration: 400 };
+			flyProps = { x: 1000, y: 0, duration: 400 };
 		}
 		setTimeout(() => {
 			showPreloader = false;

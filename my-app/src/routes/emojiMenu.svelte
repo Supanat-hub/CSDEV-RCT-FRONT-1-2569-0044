@@ -40,13 +40,13 @@
 </script>
 
 <div class="rounded-2xl bg-[#1F1F1F] mt-2 p-2 grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9">
-        {#each emojis as emoji}
+        {#each emojis as emoji (emoji.id)}
         <div role="button" tabindex="0" class="use-hover-cursor relative rounded-lg flex flex-col items-center justify-center m-1 p-2 transition duration-300 ease-in-out hover:bg-[#FFFFFF1C]"
             onclick={() => handleCopy(emoji.id)}
             onkeydown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     handleCopy(emoji.id);
-                    e.preventDefault(); // auti scroll
+                    e.preventDefault(); // prevent auto scroll
                 }
             }}
         >
@@ -59,7 +59,7 @@
             {#if copiedId === emoji.id}
                 <div class="absolute inset-0 bg-[#000000BD] rounded-lg z-10"></div>
                 <div 
-                    transition:fly={{ y: -15, duration: 100, delay:200 }}
+                    transition:fly={{ y: -15, duration: 100, delay: 200 }}
                     class="font-extralight absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-[14px] z-20 drop-shadow-md"
                 >
                     Copied!
