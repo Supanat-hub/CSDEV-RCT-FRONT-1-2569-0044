@@ -21,7 +21,7 @@ export const load = async () => {
     } catch(err) {
         return { 
             emojis: [], 
-            error: 'Failed to fatch emojis'
+            error: 'Failed to fetch emojis'
         };
     }
 };
